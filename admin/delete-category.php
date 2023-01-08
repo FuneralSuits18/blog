@@ -6,14 +6,15 @@
         
 
         // update category-id to the id of "Random" category
+        $update_query = "UPDATE posts SET category_id=8 WHERE category_id=$id";
+        $update_result = mysqli_query($connection, $update_query);
 
-
-
-
-        // delete category
-        $query = "DELETE FROM categories WHERE id=$id LIMIT 1";
-        $result = mysqli_query($connection, $query);
-        $_SESSION['delete-category-success'] = "Category deleted.";
+        if(!mysqli_errno($connection)){
+            // delete category
+            $query = "DELETE FROM categories WHERE id=$id LIMIT 1";
+            $result = mysqli_query($connection, $query);
+            $_SESSION['delete-category-success'] = "Category deleted.";
+        }
     }
     header('location: ' . ROOT_URL . 'admin/manage-categories.php');
     die();

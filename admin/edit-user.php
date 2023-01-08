@@ -7,6 +7,7 @@
         $query = "SELECT * FROM users WHERE email='$email'";
         $result = mysqli_query($connection, $query);
         $user = mysqli_fetch_assoc($result);
+        $avatar = $user['avatar'];
     }
     else{
         header('location: ' . ROOT_URL . '../signin.php');
@@ -46,7 +47,7 @@
             <?php endif ?>
             <form action="<?= ROOT_URL ?>admin/edit-user-logic.php" enctype="multipart/form-data" method="POST">
                 <div class="email"><?= $email ?></div>
-                <input type="hidden" name="prev_avatar_name" value="<?= $user['thumbnail'] ?>">
+                <input type="hidden" name="prev_avatar_name" value="<?= $avatar ?>">
                 <input type="text" name="firstname" value="<?= $firstname ?>" placeholder="Firstname">
                 <input type="text" name="lastname" value="<?= $lastname ?>" placeholder="Lastname">
                 <input type="text" name="username" value="<?= $username ?>" placeholder="Username">

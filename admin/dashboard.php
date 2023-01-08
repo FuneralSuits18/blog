@@ -42,6 +42,16 @@
                         ?>
                     </p>
                 </div>
+        <?php  // shows if delete-post was successful
+            elseif(isset($_SESSION['delete-post-success'])) : ?>
+                <div class="alert__message success container">
+                    <p>
+                        <?=
+                            $_SESSION['delete-post-success'];
+                            unset($_SESSION['delete-post-success']);
+                        ?>
+                    </p>
+                </div>
         <?php endif ?>
         <div class="container dashboard__container">
             <aside>
